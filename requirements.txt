@@ -1,0 +1,9 @@
+opencv-python-headless
+pandas
+pillow
+pylibdmtx
+pyzxing
+scikit-image
+scipy
+streamlit
+zxing-cpp

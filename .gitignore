@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+.streamlit/
+reports/
+test_cases/
+test_cases2/
+
+*.log
+.DS_Store
