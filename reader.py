@@ -369,7 +369,7 @@ def decode_with_grid_reconstruction(image: Image.Image, options: ReaderOptions, 
         )
 
     attempts = 0
-    max_grid_attempts = 2500 if options.mode == "balanced" else 9000
+    max_grid_attempts = 1800
     angles = (0, -1, 1, -2, 2, -3, 3)
     sizes = (14, 16) if options.mode == "balanced" else (14, 16, 18, 20)
     thresholds = ("otsu", "mean", "p42", "p45", "p50", "p55", "p58")

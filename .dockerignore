@@ -1,0 +1,11 @@
+.git/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+reports/
+test_cases2/
+.streamlit/
+.DS_Store

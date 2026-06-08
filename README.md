@@ -12,12 +12,51 @@ conda activate 2d12
 streamlit run app.py
 ```
 
+## Reproducible Runtime
+
+The most reproducible path is Docker, because `pylibdmtx` depends on the native OS `libdmtx` shared library, not only the Python package.
+
+```bash
+docker build -t 2d-reading .
+docker run --rm -p 8501:8501 2d-reading
+```
+
+Then open:
+
+```text
+http://localhost:8501
+```
+
+To verify the decoder stack inside the container:
+
+```bash
+docker run --rm 2d-reading python scripts/check_runtime.py --benchmark --max-seconds 30
+```
+
+Expected local benchmark target for `test_cases/` is 23 / 24 with a 30 second per-image limit. A result around 20 / 24 usually means one of these is different:
+
+- native `libdmtx` is missing or a different OS package is loaded
+- `pylibdmtx` is installed but cannot find `libdmtx`
+- the per-image timeout is too short for the slower `pylibdmtx` cases
+- Python package versions differ from `requirements.txt`
+
+For a native Ubuntu/WSL setup, install the OS library before Python packages:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y libdmtx0t64 openjdk-17-jre-headless
+pip install -r requirements.txt
+python scripts/check_runtime.py --benchmark --max-seconds 30
+```
+
+On older Debian/Ubuntu images the package may be named `libdmtx0b` instead of `libdmtx0t64`. If native setup is inconsistent, use Docker.
+
 ## Benchmark Samples
 
 ```bash
 source /home/wseokyang/miniconda3/etc/profile.d/conda.sh
 conda activate 2d12
-python scripts/benchmark_cases.py --mode aggressive --max-seconds 6
+python scripts/benchmark_cases.py --mode aggressive --max-seconds 30
 ```
 
 The benchmark writes:
