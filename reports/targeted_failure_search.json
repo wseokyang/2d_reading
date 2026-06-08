@@ -1,0 +1,29 @@
+[
+  {
+    "file": "{0783A71B-ACC9-4179-A3AF-25FC9042B4FC}.png",
+    "ok": false,
+    "decoded_text": "",
+    "engine": "",
+    "variant": "",
+    "attempts": 13748,
+    "elapsed_seconds": 600.073
+  },
+  {
+    "file": "{B3CB698A-59D5-41A0-8DC4-01E686BF9AB9}.png",
+    "ok": true,
+    "decoded_text": "0449806165400501",
+    "engine": "zxing-cpp/GlobalHistogram/pure=False/down=True",
+    "variant": "gray-med5/x3/pad255/rot-1",
+    "attempts": 2258,
+    "elapsed_seconds": 52.919
+  },
+  {
+    "file": "{E7CA298A-DC03-45A1-BABC-BEF2C7D89DFB}.png",
+    "ok": false,
+    "decoded_text": "",
+    "engine": "",
+    "variant": "",
+    "attempts": 17427,
+    "elapsed_seconds": 600.093
+  }
+]

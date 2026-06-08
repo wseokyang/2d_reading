@@ -1,0 +1,218 @@
+[
+  {
+    "file": "1.png",
+    "ok": true,
+    "decoded_text": "SPXAWTJEU1775",
+    "engine": "pylibdmtx/shrink=5,shape=DmtxSymbolSquareAuto",
+    "variant": "libdmtx-priority-original-x2",
+    "attempts": 22,
+    "elapsed_seconds": 4.265
+  },
+  {
+    "file": "10.png",
+    "ok": true,
+    "decoded_text": "0527832145070321",
+    "engine": "zxing-cpp/LocalAverage",
+    "variant": "original-rgb/pure-False",
+    "attempts": 1,
+    "elapsed_seconds": 0.001
+  },
+  {
+    "file": "11.png",
+    "ok": true,
+    "decoded_text": "0449806295400831",
+    "engine": "pylibdmtx/default",
+    "variant": "libdmtx-original-pad-white",
+    "attempts": 92,
+    "elapsed_seconds": 4.193
+  },
+  {
+    "file": "12.png",
+    "ok": true,
+    "decoded_text": "0449805695400351",
+    "engine": "pylibdmtx/shrink=3",
+    "variant": "libdmtx-priority-original-pad-white",
+    "attempts": 19,
+    "elapsed_seconds": 0.741
+  },
+  {
+    "file": "13.png",
+    "ok": true,
+    "decoded_text": "NVYB9TIAU1369",
+    "engine": "pylibdmtx/shrink=2",
+    "variant": "libdmtx-priority-original",
+    "attempts": 3,
+    "elapsed_seconds": 0.682
+  },
+  {
+    "file": "14.png",
+    "ok": true,
+    "decoded_text": "56Z",
+    "engine": "pylibdmtx/shrink=3",
+    "variant": "libdmtx-priority-original-pad-white",
+    "attempts": 19,
+    "elapsed_seconds": 2.067
+  },
+  {
+    "file": "15.png",
+    "ok": true,
+    "decoded_text": "NVYB9TIFU1647",
+    "engine": "zxing-cpp/GlobalHistogram",
+    "variant": "original-rgb/pure-False",
+    "attempts": 1,
+    "elapsed_seconds": 0.002
+  },
+  {
+    "file": "16.png",
+    "ok": true,
+    "decoded_text": "0449839825400691",
+    "engine": "pylibdmtx/default",
+    "variant": "libdmtx-original-pad-white",
+    "attempts": 92,
+    "elapsed_seconds": 4.515
+  },
+  {
+    "file": "17.png",
+    "ok": false,
+    "decoded_text": "",
+    "engine": "",
+    "variant": "",
+    "attempts": 280,
+    "elapsed_seconds": 30.189
+  },
+  {
+    "file": "18.png",
+    "ok": true,
+    "decoded_text": "0449839675400201",
+    "engine": "pylibdmtx/shrink=5",
+    "variant": "libdmtx-original-pad-black",
+    "attempts": 122,
+    "elapsed_seconds": 11.499
+  },
+  {
+    "file": "19.png",
+    "ok": true,
+    "decoded_text": "NVYB9TIFU0886",
+    "engine": "pylibdmtx/shrink=5",
+    "variant": "libdmtx-priority-original-x2",
+    "attempts": 21,
+    "elapsed_seconds": 4.372
+  },
+  {
+    "file": "2.png",
+    "ok": true,
+    "decoded_text": "0913021445490871",
+    "engine": "pylibdmtx/shrink=3,shape=DmtxSymbolSquareAuto",
+    "variant": "libdmtx-original-pad-black",
+    "attempts": 119,
+    "elapsed_seconds": 19.534
+  },
+  {
+    "file": "20.png",
+    "ok": true,
+    "decoded_text": "0913001735490691",
+    "engine": "pylibdmtx/shrink=3",
+    "variant": "libdmtx-priority-original-pad-white",
+    "attempts": 19,
+    "elapsed_seconds": 1.956
+  },
+  {
+    "file": "21.png",
+    "ok": true,
+    "decoded_text": "0913163045460201",
+    "engine": "pylibdmtx/shrink=3",
+    "variant": "libdmtx-priority-original",
+    "attempts": 4,
+    "elapsed_seconds": 1.042
+  },
+  {
+    "file": "22.png",
+    "ok": true,
+    "decoded_text": "0527832385070881",
+    "engine": "pylibdmtx/default",
+    "variant": "libdmtx-original-pad-white",
+    "attempts": 92,
+    "elapsed_seconds": 9.276
+  },
+  {
+    "file": "23.png",
+    "ok": true,
+    "decoded_text": "NVYB9THKU1159",
+    "engine": "pylibdmtx/shrink=4",
+    "variant": "libdmtx-priority-original",
+    "attempts": 5,
+    "elapsed_seconds": 1.838
+  },
+  {
+    "file": "24.png",
+    "ok": false,
+    "decoded_text": "",
+    "engine": "",
+    "variant": "",
+    "attempts": 184,
+    "elapsed_seconds": 30.36
+  },
+  {
+    "file": "3.png",
+    "ok": true,
+    "decoded_text": "0449395485400691",
+    "engine": "pylibdmtx/shrink=2,shape=DmtxSymbolSquareAuto",
+    "variant": "libdmtx-original-pad-black",
+    "attempts": 117,
+    "elapsed_seconds": 15.501
+  },
+  {
+    "file": "4.png",
+    "ok": true,
+    "decoded_text": "NVYB9TIFU1506",
+    "engine": "pylibdmtx/shrink=4,shape=DmtxSymbolSquareAuto",
+    "variant": "libdmtx-priority-gray",
+    "attempts": 16,
+    "elapsed_seconds": 4.45
+  },
+  {
+    "file": "5.png",
+    "ok": true,
+    "decoded_text": "NVXNGTGLU0566",
+    "engine": "pylibdmtx/default",
+    "variant": "libdmtx-priority-original",
+    "attempts": 2,
+    "elapsed_seconds": 0.052
+  },
+  {
+    "file": "6.png",
+    "ok": true,
+    "decoded_text": "0449839825400691",
+    "engine": "pylibdmtx/default",
+    "variant": "libdmtx-original-pad-black",
+    "attempts": 115,
+    "elapsed_seconds": 13.257
+  },
+  {
+    "file": "7.png",
+    "ok": true,
+    "decoded_text": "0406102455130761",
+    "engine": "pylibdmtx/shrink=2,shape=DmtxSymbolSquareAuto",
+    "variant": "libdmtx-original-pad-white",
+    "attempts": 94,
+    "elapsed_seconds": 10.586
+  },
+  {
+    "file": "8.png",
+    "ok": false,
+    "decoded_text": "",
+    "engine": "",
+    "variant": "",
+    "attempts": 153,
+    "elapsed_seconds": 30.066
+  },
+  {
+    "file": "9.png",
+    "ok": true,
+    "decoded_text": "NVXNGTGMU1076",
+    "engine": "pylibdmtx/shrink=2",
+    "variant": "libdmtx-priority-original",
+    "attempts": 3,
+    "elapsed_seconds": 0.853
+  }
+]

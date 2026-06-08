@@ -1,0 +1,4 @@
+file,ok,decoded_text,engine,variant,attempts,elapsed_seconds
+{0783A71B-ACC9-4179-A3AF-25FC9042B4FC}.png,False,,,,13748,600.073
+{B3CB698A-59D5-41A0-8DC4-01E686BF9AB9}.png,True,0449806165400501,zxing-cpp/GlobalHistogram/pure=False/down=True,gray-med5/x3/pad255/rot-1,2258,52.919
+{E7CA298A-DC03-45A1-BABC-BEF2C7D89DFB}.png,False,,,,17427,600.093

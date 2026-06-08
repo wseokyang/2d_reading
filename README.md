@@ -83,4 +83,4 @@ The reader tries the original image first, then scans adjusted grayscale/color-c
 
 For very low-contrast crops, the reader also has a compact grid reconstruction fallback. It samples likely 14x14/16x16 Data Matrix module grids, enforces only the fixed finder/timing border, re-renders a clean symbol, then accepts the result only when `zxing-cpp` successfully ECC-decodes the reconstructed symbol. This recovered the red low-contrast `{0783A71B-ACC9-4179-A3AF-25FC9042B4FC}.png` case. The remaining `{E7CA298A-DC03-45A1-BABC-BEF2C7D89DFB}.png` crop is too blurred/low-contrast for the tested local decoders and did not produce a reliable catalog match.
 
-Sample images and generated reports are intentionally git-ignored because they may contain production-like codes. Put local samples under `test_cases/` or `test_cases2/` when running the benchmark scripts.
+The public repository includes the local `test_cases/` samples and generated `reports/` artifacts for reproducibility. `test_cases2/` remains ignored unless it is explicitly prepared for public release.
