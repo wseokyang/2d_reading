@@ -18,13 +18,13 @@ The most reproducible path is Docker, because `pylibdmtx` depends on the native 
 
 ```bash
 docker build -t 2d-reading .
-docker run --rm -p 8501:8501 2d-reading
+docker run --rm -p 8080:8080 2d-reading
 ```
 
 Then open:
 
 ```text
-http://localhost:8501
+http://localhost:8080
 ```
 
 To verify the decoder stack inside the container:
