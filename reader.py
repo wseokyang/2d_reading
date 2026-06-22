@@ -268,7 +268,7 @@ def zxing_priority_candidates(image: Image.Image) -> Iterable[tuple[str, np.ndar
     )
 
     for name, arr in bases:
-        for scale in (2, 3, 4):
+        for scale in zxing_priority_scales(arr):
             scaled = resize_for_scan(arr, scale)
             for pad_value in (255, 0):
                 padded = add_quiet_zone(scaled, value=pad_value)
@@ -369,10 +369,10 @@ def decode_with_grid_reconstruction(image: Image.Image, options: ReaderOptions, 
         )
 
     attempts = 0
-    max_grid_attempts = 1800
+    max_grid_attempts = 30000 if options.mode == "aggressive" else 9000
     angles = (0, -1, 1, -2, 2, -3, 3)
     sizes = (14, 16) if options.mode == "balanced" else (14, 16, 18, 20)
-    thresholds = ("otsu", "mean", "p42", "p45", "p50", "p55", "p58")
+    thresholds = ("otsu", "mean", "p42", "p45", "p50", "p55", "p56", "p58", "p59", "p62")
 
     for source_name, source in sources:
         for angle in angles:
@@ -383,7 +383,7 @@ def decode_with_grid_reconstruction(image: Image.Image, options: ReaderOptions, 
             for size in sizes:
                 if time.monotonic() - started > options.max_seconds or attempts >= max_grid_attempts:
                     break
-                for left, top, right, bottom in grid_boxes(width, height):
+                for left, top, right, bottom in prioritized_grid_boxes(rotated):
                     if time.monotonic() - started > options.max_seconds or attempts >= max_grid_attempts:
                         break
                     roi = rotated[top : height - bottom, left : width - right]
@@ -398,7 +398,7 @@ def decode_with_grid_reconstruction(image: Image.Image, options: ReaderOptions, 
                                 attempts += 1
                                 oriented = np.rot90(matrix, rotation)
                                 finder_score = grid_finder_score(oriented)
-                                if finder_score < 0.98:
+                                if finder_score < 0.89:
                                     continue
                                 for corrected in (False, True):
                                     clean = force_grid_finder(oriented) if corrected else oriented
@@ -678,6 +678,183 @@ def grid_boxes(width: int, height: int) -> list[tuple[int, int, int, int]]:
     return [(left, top, right, bottom) for _, left, top, right, bottom in sorted(candidates)]
 
 
+def zxing_priority_scales(arr: np.ndarray) -> tuple[int, ...]:
+    max_dim = max(arr.shape[:2])
+    if max_dim >= 450:
+        return (1, 2)
+    if max_dim >= 320:
+        return (1, 2, 3)
+    return (2, 3, 4)
+
+
+def prioritized_grid_boxes(source: np.ndarray) -> Iterable[tuple[int, int, int, int]]:
+    height, width = source.shape[:2]
+    seen: set[tuple[int, int, int, int]] = set()
+    for boxes in (grid_ratio_boxes(width, height), grid_foreground_boxes(source)):
+        for box in boxes:
+            if not valid_grid_box(box, width, height):
+                continue
+            if box in seen:
+                continue
+            seen.add(box)
+            yield box
+    for box in grid_boxes(width, height):
+        if not valid_grid_box(box, width, height):
+            continue
+        if box in seen:
+            continue
+        seen.add(box)
+        yield box
+
+
+def valid_grid_box(box: tuple[int, int, int, int], width: int, height: int) -> bool:
+    left, top, right, bottom = box
+    if left < 0 or top < 0 or right < 0 or bottom < 0:
+        return False
+    if width - left - right < 30 or height - top - bottom < 30:
+        return False
+    return True
+
+
+def grid_ratio_boxes(width: int, height: int) -> list[tuple[int, int, int, int]]:
+    offsets = tuple(range(-5, 6))
+    fractions = (0.10, 0.12, 0.14, 0.16, 0.18, 0.20, 0.22, 0.25, 0.28, 0.32)
+    priority_offsets = (
+        (0, 0, 0, 0),
+        (0, 1, 0, -1),
+        (-1, 1, 1, -1),
+        (-2, 2, 2, -2),
+        (-3, 2, 3, -2),
+        (-3, 3, 3, -3),
+        (-4, 4, 4, -4),
+        (2, 2, 2, 0),
+        (3, 3, 3, 1),
+        (-2, 0, 2, 0),
+        (0, 2, 0, -2),
+    )
+    result: list[tuple[int, int, int, int]] = []
+    seen_result: set[tuple[int, int, int, int]] = set()
+
+    def add_box(box: tuple[int, int, int, int]) -> None:
+        left, top, right, bottom = box
+        roi_width = width - left - right
+        roi_height = height - top - bottom
+        if roi_width < 30 or roi_height < 30:
+            return
+        if box in seen_result:
+            return
+        seen_result.add(box)
+        result.append(box)
+
+    for fraction in fractions:
+        x_margin = round(width * fraction)
+        y_margin = round(height * fraction)
+
+        for left_offset, top_offset, right_offset, bottom_offset in priority_offsets:
+            add_box(
+                (
+                    max(0, x_margin + left_offset),
+                    max(0, y_margin + top_offset),
+                    max(0, x_margin + right_offset),
+                    max(0, y_margin + bottom_offset),
+                )
+            )
+
+        candidates: list[tuple[float, tuple[int, int, int, int]]] = []
+        for left_offset in offsets:
+            for top_offset in offsets:
+                for right_offset in offsets:
+                    for bottom_offset in offsets:
+                        left = max(0, x_margin + left_offset)
+                        top = max(0, y_margin + top_offset)
+                        right = max(0, x_margin + right_offset)
+                        bottom = max(0, y_margin + bottom_offset)
+                        roi_width = width - left - right
+                        roi_height = height - top - bottom
+                        if roi_width < 30 or roi_height < 30:
+                            continue
+                        shape_cost = abs((roi_width / max(1, roi_height)) - 1.0)
+                        balance_cost = (abs(left - right) + abs(top - bottom)) * 0.01
+                        candidates.append((shape_cost + balance_cost, (left, top, right, bottom)))
+
+        seen: set[tuple[int, int, int, int]] = set()
+        added = 0
+        for _, box in sorted(candidates):
+            if box in seen:
+                continue
+            seen.add(box)
+            add_box(box)
+            added += 1
+            if added >= 25:
+                break
+    return result
+
+
+def grid_foreground_boxes(source: np.ndarray) -> list[tuple[int, int, int, int]]:
+    arr = source if source.ndim == 2 else cv2.cvtColor(source, cv2.COLOR_RGB2GRAY)
+    arr = normalize(arr)
+    height, width = arr.shape[:2]
+    min_side = min(width, height)
+    kernel_size = max(3, int(round(min_side * 0.025)) | 1)
+    kernel = np.ones((kernel_size, kernel_size), dtype="uint8")
+    threshold_names = ("otsu", "p35", "p40", "p45", "p50", "p55", "p60", "p65")
+
+    candidates: list[tuple[float, tuple[int, int, int, int]]] = []
+    for threshold_name in threshold_names:
+        threshold = foreground_threshold_value(arr, threshold_name)
+        for invert in (False, True):
+            mask = arr < threshold if not invert else arr > threshold
+            fill_ratio = float(mask.mean())
+            if fill_ratio < 0.01 or fill_ratio > 0.75:
+                continue
+            binary = (mask.astype("uint8")) * 255
+            closed = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, kernel)
+            dilated = cv2.dilate(closed, kernel, iterations=1)
+            contours, _ = cv2.findContours(dilated, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            boxes = [cv2.boundingRect(contour) for contour in contours]
+
+            y_coords, x_coords = np.where(mask)
+            if len(x_coords):
+                x0, x1 = int(x_coords.min()), int(x_coords.max()) + 1
+                y0, y1 = int(y_coords.min()), int(y_coords.max()) + 1
+                boxes.append((x0, y0, x1 - x0, y1 - y0))
+
+            for x, y, box_width, box_height in boxes:
+                if box_width < min_side * 0.28 or box_height < min_side * 0.28:
+                    continue
+                if box_width > width * 0.96 or box_height > height * 0.96:
+                    continue
+                aspect = box_width / max(1, box_height)
+                if not 0.65 <= aspect <= 1.35:
+                    continue
+                for delta in (-4, -2, 0, 2, 4, 6, 8):
+                    left = max(0, x - delta)
+                    top = max(0, y - delta)
+                    right = max(0, width - min(width, x + box_width + delta))
+                    bottom = max(0, height - min(height, y + box_height + delta))
+                    roi_width = width - left - right
+                    roi_height = height - top - bottom
+                    shape_cost = abs((roi_width / max(1, roi_height)) - 1.0)
+                    area_cost = abs((roi_width * roi_height) / max(1, width * height) - 0.5)
+                    candidates.append((shape_cost + area_cost, (left, top, right, bottom)))
+
+    seen: set[tuple[int, int, int, int]] = set()
+    result: list[tuple[int, int, int, int]] = []
+    for _, box in sorted(candidates):
+        if box in seen:
+            continue
+        seen.add(box)
+        result.append(box)
+    return result[:80]
+
+
+def foreground_threshold_value(arr: np.ndarray, name: str) -> float:
+    if name == "otsu":
+        threshold, _ = cv2.threshold(arr, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        return float(threshold)
+    return float(np.percentile(arr, int(name[1:])))
+
+
 def grid_margin_values(length: int) -> list[int]:
     values = {
         0,
@@ -694,6 +871,7 @@ def grid_margin_values(length: int) -> list[int]:
         int(length * 0.12),
         int(length * 0.15),
     }
+    values.update(range(int(length * 0.08), int(length * 0.18) + 1, 2))
     center = length * 0.11
     return sorted((value for value in values if 0 <= value < length // 3), key=lambda value: (abs(value - center), value))
 
