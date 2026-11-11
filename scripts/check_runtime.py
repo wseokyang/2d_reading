@@ -10,7 +10,10 @@ import sys
 from pathlib import Path
 
 from PIL import Image
-from pylibdmtx.pylibdmtx import decode, encode
+try:
+    from pylibdmtx.pylibdmtx import decode, encode
+except ImportError:
+    decode = encode = None
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -32,7 +35,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Check Data Matrix reader runtime reproducibility.")
     parser.add_argument("--benchmark", action="store_true", help="Also run the local test_cases benchmark.")
     parser.add_argument("--max-seconds", type=float, default=30.0)
-    parser.add_argument("--expected-successes", type=int, default=23)
+    parser.add_argument("--expected-successes", type=int, default=26,
+                        help="Minimum number of exact reference matches in test_cases.")
     args = parser.parse_args()
 
     info = runtime_info()
@@ -81,6 +85,8 @@ def command_version(command: list[str]) -> str:
 
 
 def dmtx_self_test() -> bool:
+    if decode is None or encode is None:
+        return False
     payload = b"REPRODUCIBILITY-CHECK-001"
     encoded = encode(payload)
     image = Image.frombytes("RGB", (encoded.width, encoded.height), encoded.pixels)
@@ -106,12 +112,18 @@ def run_benchmark(max_seconds: float, expected_successes: int) -> int:
         "--json",
         str(json_path.relative_to(ROOT)),
     ]
-    subprocess.run(command, cwd=ROOT, check=False)
+    # Do not accept a previous run's report if argument validation or startup fails.
+    json_path.unlink(missing_ok=True)
+    completed = subprocess.run(command, cwd=ROOT, check=False)
+    if completed.returncode not in (0, 2) or not json_path.exists():
+        print("runtime_benchmark_summary: benchmark did not produce a valid report", flush=True)
+        return 2
     rows = json.loads(json_path.read_text(encoding="utf-8"))
     decoded = sum(1 for row in rows if row.get("ok"))
+    verified = sum(1 for row in rows if row.get("verified") is True)
     total = len(rows)
-    print(f"runtime_benchmark_summary: {decoded}/{total} decoded; expected >= {expected_successes}", flush=True)
-    return 0 if decoded >= expected_successes else 2
+    print(f"runtime_benchmark_summary: {decoded}/{total} decoded; {verified}/{total} exact reference matches; expected >= {expected_successes}", flush=True)
+    return 0 if verified >= expected_successes else 2
 
 
 if __name__ == "__main__":

@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "description": "Regression references preserve strings exactly, including leading zeroes. Historical decoder-confirmed values are not independently supplied ground truth. Unknown expected values must not count as verified. This file is for validation only and must never be loaded by the runtime reader.",
+  "cases": {
+    "user_yellow_mark_blue_metal.png": {
+      "expected_text": "0540234986250871",
+      "provenance": "decoder-confirmed",
+      "source": "User-supplied conversation image; prior conversation reference independently matched by local ZXing ECC decoding after color-channel denoising.",
+      "source_engine": "zxing-cpp"
+    },
+    "user_yellow_mark_dark_metal.png": {
+      "expected_text": "0523413046220941",
+      "provenance": "decoder-confirmed",
+      "source": "User-supplied conversation image; prior conversation reference independently matched by local ZXing ECC decoding after color-channel denoising.",
+      "source_engine": "zxing-cpp"
+    },
+    "{0783A71B-ACC9-4179-A3AF-25FC9042B4FC}.png": {
+      "expected_text": "0449806295400831",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/BoolCast/grid"
+    },
+    "{0A39DE39-B2BD-4884-AE41-75AB1645DA56}.png": {
+      "expected_text": "SPXAWTJEU1775",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/GlobalHistogram"
+    },
+    "{0CC683AC-69A6-4A72-A505-7B831EC95AF2}.png": {
+      "expected_text": "0913021445490871",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "pylibdmtx/shrink=4"
+    },
+    "{0E4311E3-8602-4E5F-8FF2-7DAAE2ABC2BF}.png": {
+      "expected_text": "0449395485400691",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/FixedThreshold"
+    },
+    "{1A604613-57EB-4C2B-ADD5-A3A3FA93A4AD}.png": {
+      "expected_text": "NVYB9TIFU1506",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{22A13104-DC65-43D3-8835-CC1B9A259244}.png": {
+      "expected_text": "NVXNGTGLU0566",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{297FA880-2356-413B-AD97-3AD731BB4D94}.png": {
+      "expected_text": "NVXNGTGMU1076",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{44AA7726-B9A7-47A1-AAE9-C4C4809B3AB8}.png": {
+      "expected_text": "0449839825400691",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/FixedThreshold"
+    },
+    "{52BD2EA3-C2AD-4FCD-97F5-7089E419E0C5}.png": {
+      "expected_text": "0406102455130761",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "pylibdmtx/shrink=5,shape=DmtxSymbolSquareAuto"
+    },
+    "{60ED12BE-5822-4234-A1F4-678F2D1867B4}.png": {
+      "expected_text": "NVYB9THBU1388",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "pylibdmtx/shrink=5"
+    },
+    "{686C0329-B659-4C42-9490-EC0AE0D20E51}.png": {
+      "expected_text": "0527832145070321",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{827B0CA6-11C7-48A2-9240-1AA31A892CD0}.png": {
+      "expected_text": "0449805695400351",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/BoolCast/grid"
+    },
+    "{8769CCB6-4D93-44B7-8521-5E2C023A3C0A}.png": {
+      "expected_text": "NVYB9TIAU1369",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{AC7508BD-D8D4-4888-B4FA-05F57C480559}.png": {
+      "expected_text": "0913163045460201",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{ADB83249-B3FE-4391-A34B-7B23D0B6B7F3}.png": {
+      "expected_text": "0527832385070881",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{B3CB698A-59D5-41A0-8DC4-01E686BF9AB9}.png": {
+      "expected_text": "0449806165400501",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/GlobalHistogram"
+    },
+    "{B74970CD-9F3A-40D8-9448-726CFB0D3CFB}.png": {
+      "expected_text": "NVYB9THKU1159",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{BC3E1439-D9F9-4896-8C90-5989ABF0B5DE}.png": {
+      "expected_text": "0405174384430311",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{BFD3F66A-1D82-437C-9A79-C32C822B3209}.png": {
+      "expected_text": "NVYB9TIFU1647",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{C762DD90-8B57-4C95-A300-7F09888D248A}.png": {
+      "expected_text": "0449839825400691",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/BoolCast/grid"
+    },
+    "{E7CA298A-DC03-45A1-BABC-BEF2C7D89DFB}.png": {
+      "expected_text": "0405174384430241",
+      "provenance": "decoder-confirmed",
+      "source": "Independent center-grid reconstruction from original pixels, RGB mean and green-channel illumination subtraction; 127 neighboring samples agreed; observed finder was correct without border forcing; ZXing valid=True, error=None.",
+      "source_engine": "zxing-cpp/grid"
+    },
+    "{E7EF989E-60EF-4B97-8F6D-7EE4F84A5280}.png": {
+      "expected_text": "0449839675400201",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    },
+    "{E8453228-925D-4205-BBE1-E8D5293EFB38}.png": {
+      "expected_text": "NVYB9TIFU0886",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/GlobalHistogram"
+    },
+    "{FBE6AF57-BD2A-4AB8-B288-DF9A46036AAE}.png": {
+      "expected_text": "0913001735490691",
+      "provenance": "decoder-confirmed",
+      "source": "reports/test_cases_after_grid_reconstruction.json",
+      "source_engine": "zxing-cpp/LocalAverage"
+    }
+  }
+}

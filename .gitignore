@@ -8,3 +8,7 @@ __pycache__/
 test_cases2/
 
 .DS_Store
+.venv/
+.env
+.env.*
+!.env.example

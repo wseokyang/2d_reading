@@ -1,0 +1,1981 @@
+{
+  "evaluation": "simulated_api_protocol_not_real_glm_inference",
+  "real_glm_inference": false,
+  "description": "One shared manual preprocessing plan for every image; no filename or payload lookup in the API server or reader.",
+  "recipes": [
+    {
+      "bbox": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "channel": "blue",
+      "blur_sigma": 3,
+      "threshold": null,
+      "invert": false,
+      "grid_size": null
+    },
+    {
+      "bbox": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "channel": "yellow_blue",
+      "blur_sigma": 3,
+      "threshold": null,
+      "invert": false,
+      "grid_size": null
+    },
+    {
+      "bbox": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "channel": "gray",
+      "blur_sigma": 3,
+      "threshold": null,
+      "invert": false,
+      "grid_size": null
+    },
+    {
+      "bbox": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "channel": "green",
+      "blur_sigma": 2,
+      "threshold": 110,
+      "invert": false,
+      "grid_size": null
+    }
+  ],
+  "summary": {
+    "total_cases": 26,
+    "decoded": 26,
+    "exact_matches": 26,
+    "api_calls": 23,
+    "invalid_api_requests": 0,
+    "direct_skips": 3,
+    "hint_used": 20,
+    "local_fallback": 3,
+    "elapsed_seconds": 12.18
+  },
+  "cases": [
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "user_yellow_mark_blue_metal.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0540234986250871",
+      "decoded_texts": [
+        "0540234986250871"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/FixedThreshold",
+      "variant": "glm/hint-2/yellow_blue/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 7,
+      "elapsed_seconds": 0.058,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.038,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.32
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "user_yellow_mark_dark_metal.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0523413046220941",
+      "decoded_texts": [
+        "0523413046220941"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-1/blue/sigma-3/threshold/pure-False/downscale-False",
+      "attempts": 4,
+      "elapsed_seconds": 0.044,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.03,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.298
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{0783A71B-ACC9-4179-A3AF-25FC9042B4FC}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0449806295400831",
+      "decoded_texts": [
+        "0449806295400831"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-4/green/sigma-2/threshold/pure-False/downscale-False",
+      "attempts": 16,
+      "elapsed_seconds": 0.041,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.026,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.294
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{0A39DE39-B2BD-4884-AE41-75AB1645DA56}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "SPXAWTJEU1775",
+      "decoded_texts": [
+        "SPXAWTJEU1775"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/GlobalHistogram",
+      "variant": "glm/hint-1/blue/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 3,
+      "elapsed_seconds": 0.049,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.037,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.33
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{0CC683AC-69A6-4A72-A505-7B831EC95AF2}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0913021445490871",
+      "decoded_texts": [
+        "0913021445490871"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-1/blue/sigma-3/threshold/pure-False/downscale-False",
+      "attempts": 4,
+      "elapsed_seconds": 0.051,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.041,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.338
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{0E4311E3-8602-4E5F-8FF2-7DAAE2ABC2BF}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0449395485400691",
+      "decoded_texts": [
+        "0449395485400691"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/FixedThreshold",
+      "variant": "glm/hint-3/gray/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 11,
+      "elapsed_seconds": 0.039,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.028,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.296
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{1A604613-57EB-4C2B-ADD5-A3A3FA93A4AD}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "NVYB9TIFU1506",
+      "decoded_texts": [
+        "NVYB9TIFU1506"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/GlobalHistogram",
+      "variant": "glm/hint-1/blue/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 3,
+      "elapsed_seconds": 0.059,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.048,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.327
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{22A13104-DC65-43D3-8835-CC1B9A259244}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "NVXNGTGLU0566",
+      "decoded_texts": [
+        "NVXNGTGLU0566"
+      ],
+      "path": "direct",
+      "api_calls": 0,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "original-rgb/pure-False/downscale-False",
+      "attempts": 1,
+      "elapsed_seconds": 0.001,
+      "error": null,
+      "assistance": {
+        "status": "not-needed",
+        "used": false
+      },
+      "wall_seconds": 0.284
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{297FA880-2356-413B-AD97-3AD731BB4D94}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "NVXNGTGMU1076",
+      "decoded_texts": [
+        "NVXNGTGMU1076"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/GlobalHistogram",
+      "variant": "glm/hint-1/blue/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 3,
+      "elapsed_seconds": 0.072,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.056,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.336
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{44AA7726-B9A7-47A1-AAE9-C4C4809B3AB8}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0449839825400691",
+      "decoded_texts": [
+        "0449839825400691"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-3/gray/sigma-3/threshold/pure-False/downscale-False",
+      "attempts": 12,
+      "elapsed_seconds": 0.039,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.028,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.292
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{52BD2EA3-C2AD-4FCD-97F5-7089E419E0C5}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0406102455130761",
+      "decoded_texts": [
+        "0406102455130761"
+      ],
+      "path": "local-fallback",
+      "api_calls": 1,
+      "engine": "zxing-cpp/center-grid",
+      "variant": "center-grid/mean-local/size-14/origin-28.41-34.43/pitch-12.549-11.103/p55/invert-True/rotation-0/finder-1.000",
+      "attempts": 396,
+      "elapsed_seconds": 2.868,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.037,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": false
+      },
+      "wall_seconds": 3.148
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{60ED12BE-5822-4234-A1F4-678F2D1867B4}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "NVYB9THBU1388",
+      "decoded_texts": [
+        "NVYB9THBU1388"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/GlobalHistogram",
+      "variant": "glm/hint-3/gray/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 11,
+      "elapsed_seconds": 0.091,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.053,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.364
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{686C0329-B659-4C42-9490-EC0AE0D20E51}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0527832145070321",
+      "decoded_texts": [
+        "0527832145070321"
+      ],
+      "path": "direct",
+      "api_calls": 0,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "original-rgb/pure-False/downscale-False",
+      "attempts": 1,
+      "elapsed_seconds": 0.001,
+      "error": null,
+      "assistance": {
+        "status": "not-needed",
+        "used": false
+      },
+      "wall_seconds": 0.263
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{827B0CA6-11C7-48A2-9240-1AA31A892CD0}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0449805695400351",
+      "decoded_texts": [
+        "0449805695400351"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/GlobalHistogram",
+      "variant": "glm/hint-4/green/sigma-2/normalized/pure-False/downscale-False",
+      "attempts": 15,
+      "elapsed_seconds": 0.041,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.029,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.298
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{8769CCB6-4D93-44B7-8521-5E2C023A3C0A}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "NVYB9TIAU1369",
+      "decoded_texts": [
+        "NVYB9TIAU1369"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-1/blue/sigma-3/threshold/pure-False/downscale-False",
+      "attempts": 4,
+      "elapsed_seconds": 0.079,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.062,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.342
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{AC7508BD-D8D4-4888-B4FA-05F57C480559}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0913163045460201",
+      "decoded_texts": [
+        "0913163045460201"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-1/blue/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 3,
+      "elapsed_seconds": 0.047,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.041,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.312
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{ADB83249-B3FE-4391-A34B-7B23D0B6B7F3}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0527832385070881",
+      "decoded_texts": [
+        "0527832385070881"
+      ],
+      "path": "direct",
+      "api_calls": 0,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "original-rgb/pure-False/downscale-False",
+      "attempts": 1,
+      "elapsed_seconds": 0.001,
+      "error": null,
+      "assistance": {
+        "status": "not-needed",
+        "used": false
+      },
+      "wall_seconds": 0.26
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{B3CB698A-59D5-41A0-8DC4-01E686BF9AB9}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0449806165400501",
+      "decoded_texts": [
+        "0449806165400501"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/FixedThreshold",
+      "variant": "glm/hint-3/gray/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 11,
+      "elapsed_seconds": 0.04,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.029,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.303
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{B74970CD-9F3A-40D8-9448-726CFB0D3CFB}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "NVYB9THKU1159",
+      "decoded_texts": [
+        "NVYB9THKU1159"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-1/blue/sigma-3/threshold/pure-False/downscale-True",
+      "attempts": 4,
+      "elapsed_seconds": 0.09,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.07,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.349
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{BC3E1439-D9F9-4896-8C90-5989ABF0B5DE}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0405174384430311",
+      "decoded_texts": [
+        "0405174384430311"
+      ],
+      "path": "local-fallback",
+      "api_calls": 1,
+      "engine": "zxing-cpp/GlobalHistogram",
+      "variant": "color-blue/gaussian-1/pure-False/downscale-False",
+      "attempts": 127,
+      "elapsed_seconds": 0.117,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.028,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": false
+      },
+      "wall_seconds": 0.378
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{BFD3F66A-1D82-437C-9A79-C32C822B3209}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "NVYB9TIFU1647",
+      "decoded_texts": [
+        "NVYB9TIFU1647"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-1/blue/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 3,
+      "elapsed_seconds": 0.051,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.043,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.32
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{C762DD90-8B57-4C95-A300-7F09888D248A}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0449839825400691",
+      "decoded_texts": [
+        "0449839825400691"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/FixedThreshold",
+      "variant": "glm/hint-1/blue/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 3,
+      "elapsed_seconds": 0.033,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.03,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.325
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{E7CA298A-DC03-45A1-BABC-BEF2C7D89DFB}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0405174384430241",
+      "decoded_texts": [
+        "0405174384430241"
+      ],
+      "path": "local-fallback",
+      "api_calls": 1,
+      "engine": "zxing-cpp/center-grid",
+      "variant": "center-grid/mean-local/size-14/origin-23.39-27.47/pitch-6.741-6.331/p45/invert-False/rotation-0/finder-1.000",
+      "attempts": 658,
+      "elapsed_seconds": 1.193,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.026,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": false
+      },
+      "wall_seconds": 1.458
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{E7EF989E-60EF-4B97-8F6D-7EE4F84A5280}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0449839675400201",
+      "decoded_texts": [
+        "0449839675400201"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/FixedThreshold",
+      "variant": "glm/hint-3/gray/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 11,
+      "elapsed_seconds": 0.04,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.03,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.299
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{E8453228-925D-4205-BBE1-E8D5293EFB38}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "NVYB9TIFU0886",
+      "decoded_texts": [
+        "NVYB9TIFU0886"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-3/gray/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 11,
+      "elapsed_seconds": 0.051,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.035,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.309
+    },
+    {
+      "evaluation": "simulated_api_protocol_not_real_glm_inference",
+      "file": "{FBE6AF57-BD2A-4AB8-B288-DF9A46036AAE}.png",
+      "ok": true,
+      "verified": true,
+      "verification_status": "match",
+      "expected_text": "0913001735490691",
+      "decoded_texts": [
+        "0913001735490691"
+      ],
+      "path": "simulated-hint",
+      "api_calls": 1,
+      "engine": "zxing-cpp/LocalAverage",
+      "variant": "glm/hint-1/blue/sigma-3/normalized/pure-False/downscale-False",
+      "attempts": 3,
+      "elapsed_seconds": 0.032,
+      "error": null,
+      "assistance": {
+        "status": "ok",
+        "model": "simulated-preprocessing-plan-not-real-glm",
+        "elapsed_seconds": 0.028,
+        "hints": [
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "yellow_blue",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "gray",
+            "blur_sigma": 3.0,
+            "threshold": null,
+            "invert": false,
+            "grid_size": null
+          },
+          {
+            "bbox": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "channel": "green",
+            "blur_sigma": 2.0,
+            "threshold": 110,
+            "invert": false,
+            "grid_size": null
+          }
+        ],
+        "error": null,
+        "used": true
+      },
+      "wall_seconds": 0.29
+    }
+  ]
+}

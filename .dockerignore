@@ -9,3 +9,8 @@ reports/
 test_cases2/
 .streamlit/
 .DS_Store
+.venv/
+.env
+.env.*
+!.env.example
+reference/

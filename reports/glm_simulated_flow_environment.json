@@ -1,0 +1,39 @@
+{
+  "python": "3.12.3",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "source_sha256": {
+    "reader.py": "d5174cf2847f9f1218e798b2b74a5cbc6ff4642ca04da1a19ad0eb28520f480a",
+    "grid_recovery.py": "84f6ce6b4e04172d0efcb755fe00ef40e9dfca3bf4e15b5e4f42f9b2baf325ac",
+    "glm_assist.py": "5aa58a9dfe896c26cf89d9557e62e9cbc41a81dafb97fae5374b6a45f1730b6e",
+    "scripts/benchmark_cases.py": "8f79b37f083fca948e92e03fd3d6d88338cbeb1a2724b0d61b7c7efcef9622ca"
+  },
+  "source_hashes_recorded_before_run": true,
+  "source_hashes_unchanged_after_run": true,
+  "native_libdmtx_enabled": false,
+  "packages": {
+    "numpy": "2.4.6",
+    "opencv-python-headless": "4.13.0.92",
+    "pillow": "12.2.0",
+    "pylibdmtx": "0.1.10",
+    "zxing-cpp": "3.0.0",
+    "python-dotenv": "1.2.4"
+  },
+  "reference_note": "Reference labels are historical or newly corroborated decoder outputs, not external ground truth.",
+  "command": ".venv/bin/python scripts/check_glm_flow.py --max-seconds 12 --no-libdmtx",
+  "evaluation": "simulated_api_protocol_not_real_glm_inference",
+  "real_glm_inference": false,
+  "local_budget_seconds": 12,
+  "api_timeout_seconds": 2,
+  "hard_case_timeout_seconds": 24,
+  "summary": {
+    "total_cases": 26,
+    "decoded": 26,
+    "exact_matches": 26,
+    "api_calls": 23,
+    "invalid_api_requests": 0,
+    "direct_skips": 3,
+    "hint_used": 20,
+    "local_fallback": 3,
+    "elapsed_seconds": 12.18
+  }
+}

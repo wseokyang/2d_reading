@@ -1,0 +1,41 @@
+{
+  "reader_source_sha256": "e475e82baf3ea1581965320249d67cc70f0cd6ed6d5c00ec0e7671f081d06b12",
+  "reader_source_snapshot": "/tmp/dm-original-reader/reader.py",
+  "python": "3.12.3",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "native_libdmtx": "libdmtx.so.0",
+  "local_budget_seconds": 30,
+  "hard_case_timeout_seconds": 40,
+  "glm_enabled": false,
+  "fixture_count": 26,
+  "reference_note": "Reference labels are historical or newly corroborated decoder outputs, not external ground truth.",
+  "packages": {
+    "numpy": "2.4.6",
+    "opencv-python-headless": "4.13.0.92",
+    "pillow": "12.2.0",
+    "pylibdmtx": "0.1.10",
+    "zxing-cpp": "3.0.0"
+  },
+  "summary": {
+    "decoded": 23,
+    "verified": 23,
+    "total": 26,
+    "decoder_seconds": 127.802,
+    "wall_seconds": 139.475,
+    "median_decoder_seconds": 0.5985,
+    "failures": [
+      {
+        "file": "user_yellow_mark_blue_metal.png",
+        "elapsed_seconds": 30.323
+      },
+      {
+        "file": "user_yellow_mark_dark_metal.png",
+        "elapsed_seconds": 30.499
+      },
+      {
+        "file": "{E7CA298A-DC03-45A1-BABC-BEF2C7D89DFB}.png",
+        "elapsed_seconds": 30.017
+      }
+    ]
+  }
+}

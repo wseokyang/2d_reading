@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import time
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass, replace
 from io import BytesIO
 from typing import Iterable
 
@@ -28,6 +28,8 @@ class ReaderOptions:
     max_seconds: float = 12.0
     max_attempts: int = 650
     use_libdmtx: bool = True
+    use_glm: bool = False
+    glm_timeout_seconds: float | None = None
 
 
 @dataclass(frozen=True)
@@ -48,6 +50,7 @@ class ReadResult:
     best_variant: str
     preview_png: bytes | None
     error: str | None = None
+    assistance: dict[str, object] | None = None
 
 
 BINARIZERS = (
@@ -69,6 +72,8 @@ def read_image_bytes(data: bytes) -> Image.Image:
 
 def read_datamatrix(image: Image.Image, options: ReaderOptions | None = None) -> ReadResult:
     options = options or ReaderOptions()
+    if options.use_glm:
+        return read_with_glm(image, options)
     started = time.monotonic()
     attempts = 0
     seen: set[str] = set()
@@ -91,6 +96,16 @@ def read_datamatrix(image: Image.Image, options: ReaderOptions | None = None) ->
 
     attempts = 1
     if options.mode in {"balanced", "aggressive"}:
+        for name, candidate in color_denoise_candidates(adjusted):
+            if time.monotonic() - started > min(options.max_seconds, 2.0) or attempts >= options.max_attempts:
+                break
+            attempts += 1
+            channel_hits = decode_with_zxing(candidate, name)
+            if channel_hits:
+                return ReadResult(True, channel_hits, attempts, time.monotonic() - started,
+                                  channel_hits[0].variant, image_to_png(candidate))
+
+    if options.mode in {"balanced", "aggressive"}:
         for priority_name, priority_candidate in zxing_priority_candidates(adjusted):
             if time.monotonic() - started > min(options.max_seconds, 6.0):
                 break
@@ -107,6 +122,17 @@ def read_datamatrix(image: Image.Image, options: ReaderOptions | None = None) ->
                 )
 
     if options.mode in {"balanced", "aggressive"}:
+        from grid_recovery import recover_grid
+
+        remaining = options.max_seconds - (time.monotonic() - started)
+        recovered = recover_grid(adjusted, max_seconds=min(3.0, max(0.0, remaining)))
+        if recovered:
+            hit = CodeHit(recovered.text, "zxing-cpp/center-grid", "DataMatrix",
+                          recovered.variant, "decoded-reconstructed")
+            return ReadResult(True, [hit], attempts + recovered.attempts,
+                              time.monotonic() - started, recovered.variant,
+                              image_to_png(recovered.rendered))
+
         grid_fallback = decode_with_grid_reconstruction(adjusted, options, started)
         attempts += grid_fallback.attempts
         if grid_fallback.hits:
@@ -182,6 +208,111 @@ def apply_manual_adjustments(image: Image.Image, options: ReaderOptions) -> Imag
     result = ImageEnhance.Color(result).enhance(options.saturation)
     result = ImageEnhance.Sharpness(result).enhance(options.sharpness)
     return result
+
+
+def read_with_glm(image: Image.Image, options: ReaderOptions) -> ReadResult:
+    """Use vision hints as an execution plan, then validate with local ECC decoding.
+
+    The API has its own timeout. Local candidate processing and fallback share
+    max_seconds; a failed API call cannot consume the local decoding allowance.
+    """
+    from glm_assist import GLMOptions, iter_glm_candidates, suggest_preprocessing
+
+    started = time.monotonic()
+    adjusted = apply_manual_adjustments(image.convert("RGB"), options)
+    direct_hits = decode_with_zxing(np.asarray(adjusted), "original-rgb")
+    if direct_hits:
+        return ReadResult(True, direct_hits, 1, time.monotonic() - started,
+                          direct_hits[0].variant, pil_to_png(adjusted),
+                          assistance={"status": "not-needed", "used": False})
+
+    config = GLMOptions.from_env()
+    if options.glm_timeout_seconds is not None:
+        config = replace(config, timeout_seconds=options.glm_timeout_seconds)
+    plan = suggest_preprocessing(adjusted, config)
+    details: dict[str, object] = {
+        "status": plan.status,
+        "model": plan.model,
+        "elapsed_seconds": round(plan.elapsed_seconds, 3),
+        "hints": [asdict(hint) for hint in plan.hints],
+        "error": plan.error,
+        "used": False,
+    }
+    local_started = time.monotonic()
+    attempts = 1
+    # Preserve most of the local allowance for deterministic fallback if the
+    # visual suggestion is inaccurate. Never execute code returned by a model.
+    hint_budget = min(3.0, options.max_seconds * 0.25)
+    for name, candidate in iter_glm_candidates(adjusted, plan):
+        if time.monotonic() - local_started >= hint_budget:
+            break
+        attempts += 1
+        hits = decode_with_zxing(candidate, name)
+        if hits:
+            details["used"] = True
+            return ReadResult(True, hits, attempts, time.monotonic() - started,
+                              hits[0].variant, image_to_png(candidate), assistance=details)
+
+    if plan.hints:
+        from grid_recovery import recover_grid
+
+        for index, hint in enumerate(plan.hints):
+            remaining = hint_budget - (time.monotonic() - local_started)
+            if remaining <= 0:
+                break
+            if hint.grid_size is None:
+                continue
+            left, top, right, bottom = hint.bbox
+            crop = adjusted.crop((int(left * adjusted.width), int(top * adjusted.height),
+                                  int(right * adjusted.width), int(bottom * adjusted.height)))
+            # A model's ROI can touch the finder edges. The geometry search
+            # needs some margin around the symbol to fit module centers.
+            crop = ImageOps.expand(crop, border=max(4, round(min(crop.size) * 0.12)), fill="white")
+            recovered = recover_grid(crop, max_seconds=min(1.0, remaining), grid_sizes=(hint.grid_size,))
+            if recovered:
+                details["used"] = True
+                variant = f"glm/hint-{index + 1}/" + recovered.variant
+                hit = CodeHit(recovered.text, "zxing-cpp/center-grid", "DataMatrix",
+                              variant, "decoded-reconstructed")
+                return ReadResult(True, [hit], attempts + recovered.attempts,
+                                  time.monotonic() - started, variant,
+                                  image_to_png(recovered.rendered), assistance=details)
+
+    remaining = max(0.0, options.max_seconds - (time.monotonic() - local_started))
+    fallback = read_datamatrix(image, replace(options, use_glm=False, max_seconds=remaining))
+    return replace(fallback, attempts=attempts + fallback.attempts,
+                   elapsed_seconds=time.monotonic() - started, assistance=details)
+
+
+def color_denoise_candidates(image: Image.Image) -> Iterable[tuple[str, np.ndarray]]:
+    """Separate marking color from metal texture before geometry-heavy searches.
+
+    Work in floating point for opponent channels: uint8 subtraction would wrap.
+    Normalize *before* smoothing so fixed thresholds share a predictable scale.
+    """
+    rgb = np.asarray(image.convert("RGB"), dtype=np.float32)
+    red, green, blue = cv2.split(rgb)
+    gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
+    sources = (
+        ("blue", blue),
+        ("yellow-blue", (red + green) * 0.5 - blue),
+        ("gray", gray),
+        ("green-red", green - red),
+        ("red", red),
+        ("green", green),
+    )
+    # Interleave channels so an unsuccessful grayscale search cannot consume
+    # the budget before the color information is examined.
+    normalized = [(name, normalize(source).astype(np.uint8)) for name, source in sources]
+    for sigma in (3.0, 2.0, 1.0, 4.0):
+        for name, source in normalized:
+            blurred = cv2.GaussianBlur(source, (0, 0), sigma)
+            prefix = f"color-{name}/gaussian-{sigma:g}"
+            yield prefix, blurred
+            _, binary = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+            yield f"{prefix}/otsu", binary
+            for threshold in (110, 130, 90, 150, 70, 170, 190):
+                yield f"{prefix}/threshold-{threshold}", np.uint8(blurred > threshold) * 255
 
 
 def iter_variants(image: Image.Image, mode: str) -> Iterable[tuple[str, np.ndarray]]:
@@ -309,6 +440,10 @@ def expand_candidate(name: str, arr: np.ndarray, mode: str) -> Iterable[tuple[st
 
 
 def decode_with_zxing(arr: np.ndarray, variant: str) -> list[CodeHit]:
+    # This module's color arrays are RGB; ZXing's numpy color contract is BGR.
+    # Explicit grayscale conversion keeps the channel interpretation consistent.
+    if arr.ndim == 3:
+        arr = cv2.cvtColor(arr, cv2.COLOR_RGB2GRAY)
     hits: list[CodeHit] = []
     for binarizer in BINARIZERS:
         for pure in (False,):
